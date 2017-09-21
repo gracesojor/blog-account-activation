@@ -1,0 +1,4 @@
+== Awesome Blog - Account Activation
+
+- Adding Account Activation resource to the Awesome Blog. 
+- Using Heroku and Sendgrid. 
