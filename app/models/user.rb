@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   before_save :downcase_email
   before_create :create_activation_digest
   
-  
   has_many :microposts, dependent: :destroy
   
   has_many :active_relationships,  class_name:  "Relationship",
@@ -12,14 +11,12 @@ class User < ActiveRecord::Base
                                    
   has_many :following, through: :active_relationships, source: :followed
   
-  
   has_many :passive_relationships, class_name:  "Relationship",
                                    foreign_key: "followed_id",
                                    dependent:   :destroy
                                    
   has_many :followers, through: :passive_relationships, source: :follower
 
-  
   #before_save { email.downcase! }
   
   validates :name,  presence: true, length: { maximum: 50 }
@@ -71,14 +68,12 @@ class User < ActiveRecord::Base
     #Try 2
     #Micropost.where("user_id = ?", id)
 
-
     #---------------------------------
     #NOTES: WITH FOLLOWING
     #Micropost.where("user_id IN (#{following_ids})
     #                 OR user_id = :user_id", user_id: id)
     #following_ids = "SELECT followed_id FROM relationships
     #                WHERE  follower_id = :user_id"
-  
   
     ## FEED
     following_ids = "SELECT followed_id FROM relationships
@@ -87,7 +82,6 @@ class User < ActiveRecord::Base
                      OR user_id = :user_id", user_id: id)
   
   end
-  
   
   
   #TRY 1
@@ -106,8 +100,6 @@ class User < ActiveRecord::Base
   def following?(other_user)
     following.include?(other_user)
   end
-
-
 
   #TRY 2
   

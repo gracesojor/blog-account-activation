@@ -1,7 +1,4 @@
 <%= form_for(@micropost) do |f| %>
-  
-<!-- Form -->
-  
   <%= render 'shared/error_messages', object: f.object %>
   
   <div class="field">
@@ -10,15 +7,12 @@
   
   <%= f.submit "Post", class: "btn btn-primary" %>
   
-  
-<!-- Picture Upload -->
-  
+  <!-- Picture Upload -->
   <span class="picture">
     <%= f.file_field :picture %>
   </span>
   
 <% end %>
-
 
 <script type="text/javascript">
   $('#micropost_picture').bind('change', function() {

@@ -3,13 +3,6 @@ Rails.application.routes.draw do
 
   get 'users/new'
 
-  
-  #get 'static_pages/home'
-
-  #get 'static_pages/help'
-
-  #get 'static_pages/about'
-
   root 'static_pages#home'
 
   get  '/help',    to: 'static_pages#help', as: 'help'
@@ -23,8 +16,6 @@ Rails.application.routes.draw do
   post '/login', to:'sessions#create'
   delete '/logout', to:'sessions#destroy'
    
-  #resources :users
-  
   resources :users do
     member do
       get :following, :followers
@@ -41,8 +32,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   
-  
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
